@@ -29,7 +29,7 @@ def load_key():
         return key
 
 
-# Initialize Fernet
+
 cipher = Fernet(load_key())
 
 
@@ -112,7 +112,7 @@ def search_passwords():
 def generate_password():
     length = int(request.args.get('length', 16))
 
-    # Character sets
+
     lowercase = string.ascii_lowercase
     uppercase = string.ascii_uppercase
     digits = string.digits
@@ -126,11 +126,11 @@ def generate_password():
         secrets.choice(symbols)
     ]
 
-    # Fill remaining length
+
     all_chars = lowercase + uppercase + digits + symbols
     password_chars.extend(secrets.choice(all_chars) for _ in range(length - 4))
 
-    # Shuffle
+
     secrets.SystemRandom().shuffle(password_chars)
     password = ''.join(password_chars)
 
